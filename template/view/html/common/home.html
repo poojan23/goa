@@ -1,0 +1,584 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<!--=========================*
+        Banner
+*===========================-->
+<section id="rt_banner">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="banner_caption_text">
+                    <h1><?php echo $top_title; ?></h1>
+                    <p><?php echo $top_description; ?></p>
+                    <?php if($tops) : ?>
+                    <?php foreach($tops as $top) : ?>
+                    <a href="<?php echo $top['link']; ?>" class="btn btn-app-store" target="_blank">
+                        <i class="py py-popaya"></i> <span class="small">Go to Website</span> <span
+                            class="big"><?php echo $top['title']; ?></span>
+                    </a>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+                <?php if($tops) : ?>
+                <?php foreach($tops as $top) : ?>
+                <div class="banner_caption_img">
+                    <img class="wow fadeInUp" data-wow-delay="0.3" src="<?php echo $top['image']; ?>" alt="">
+                </div>
+                <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <div class="white-svg">
+        <svg viewBox="0 0 1440.002 238.478" xml:space="preserve">
+            <path clip-rule="evenodd"
+                d="M1440.002,189.252C591.624,304.273,597.079,58.018,0,0
+                c0,91.006,0,216.847,0,238.478c148.21-0.137,1440.002,0,1440.002,0S1440.002,208.484,1440.002,189.252L1440.002,189.252z"></path>
+        </svg>
+    </div>
+    <!--white-svg-->
+</section>
+<!--=========================*
+            End	Banner
+*===========================-->
+<!--=========================*
+            Services
+*===========================-->
+<?php if($service_status) : ?>
+<section id="rt_services">
+    <div class="container">
+        <div class="row">
+            <div class="mt_heading">
+                <h2 class="section_heading text-center"><span><?php echo $service_title; ?></span></h2>
+                <p class="heading_txt text-center"><?php echo $service_meta_description; ?></p>
+            </div>
+            <?php if($services) : ?>
+            <?php foreach($services as $service) : ?>
+            <div class="col-md-4">
+                <div class="box text-center">
+                    <div class="icon">
+                        <i class="<?php echo $service['icon']; ?>"></i>
+                    </div>
+                    <h3><?php echo $service['name']; ?></h3>
+                    <p><?php echo $service['description']; ?></p>
+                </div>
+            </div>
+            <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<!--=========================*
+          End Services
+*===========================-->
+
+<!--=========================*
+            Work
+*===========================-->
+<?php if($work_status) : ?>
+<section id="rt_how_it_works">
+    <div class="container">
+        <div class="row">
+            <div class="mt_heading">
+                <h2 class="section_heading text-center"><span><?php echo $work_title; ?></span></h2>
+                <p class="heading_txt text-center"><?php echo $work_meta_description; ?></p>
+            </div>
+            <div class="col-md-7 work_description">
+                <h3>What you get in this landing page!</h3>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page
+                    when
+                    looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters.</p>
+                <ul>
+                    <li>All the Lorem Ipsum generators on the Internet tendto repeat predefined chunks as necessary.
+                    </li>
+                    <li>All the Lorem Ipsum generators on the Internet.</li>
+                    <li>All the Lorem Ipsum generators on the Internet tendto repeat predefined.</li>
+                    <li>All the Lorem Ipsum generators on the Internet.</li>
+                    <li>All the Lorem Ipsum generators on the Internet tendto repeat predefined.</li>
+                </ul>
+            </div>
+            <div class="col-md-5 text-center wow fadeInRight">
+                <?php if($works) : ?>
+                <?php foreach($works as $work) : ?>
+                <img src="<?php echo $work['image']; ?>" alt="<?php echo $work['title']; ?>"
+                    title="<?php echo $work['title']; ?>">
+                <?php endforeach; ?>
+                <?php else : ?>
+                <img src="image/template/work/work-mobile.png" alt="">
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<!--=========================*
+            End	Work
+*===========================-->
+
+<!--=========================*
+            Features
+*===========================-->
+<?php if($about_status) : ?>
+<section id="rt_features">
+    <div class="container">
+        <div class="row">
+            <div class="mt_heading">
+                <h2 class="section_heading text-center"><span><?php echo $about_title; ?></span></h2>
+                <p class="heading_txt text-center"><?php echo $about_meta_description; ?></p>
+            </div>
+            <?php foreach(array_slice($about_description, floor(count($about_description)/2)) as $key => $description) : ?>
+            <div class="col-sm-6 col-md-6">
+                <div class="colum_left">
+                    <div class="block text-justify">
+                        <p><?php echo $description; ?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="colum_right">
+                    <div class="block text-justify">
+                        <p><?php echo $description; ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<!--=========================*
+           End Features
+*===========================-->
+
+<!--=========================*
+          ScreenShots
+*===========================-->
+<?php if($project_status) : ?>
+<section id="rt_screenshots">
+    <div class="mt_heading_white">
+        <h2 class="section_heading text-center"><span><?php echo $project_title; ?></span></h2>
+        <p class="heading_txt text-center"><?php echo $project_meta_description; ?></p>
+    </div>
+    <div class="owl-carousel">
+        <?php if($projects) : ?>
+        <?php foreach($projects as $project) : ?>
+        <div class="item">
+            <img src="<?php echo $project['image']; ?>" alt="<?php echo $project['title']; ?>"
+                title="<?php echo $project['title']; ?>">
+        </div>
+        <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</section>
+<?php endif; ?>
+<!--=========================*
+        End	ScreenShots
+*===========================-->
+
+<!--=========================*
+            Team
+*===========================-->
+<?php if($team_status) : ?>
+<section id="rt_team">
+    <div class="container">
+        <div class="row">
+            <div class="mt_heading">
+                <h2 class="section_heading text-center"><span><?php echo $team_title; ?></span></h2>
+                <p class="heading_txt text-center"><?php echo $team_meta_description; ?></p>
+            </div>
+            <div class="owl-carousel">
+                <?php if($teams) : ?>
+                <?php foreach($teams as $team) : ?>
+                <!--Team Member-->
+                <div class="item">
+                    <div class="col-md-12">
+                        <div class="team_member">
+                            <figure class="member_item">
+                                <img src="<?php echo $team['thumb']; ?>" alt="<?php echo $team['name']; ?>" />
+                                <figcaption>
+                                    <h3><?php echo $team['name']; ?></h3>
+                                    <p><?php echo $team['designation']; ?></p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<!--=========================*
+          End Team
+*===========================-->
+
+<!--=========================*
+          Watch Section
+*===========================-->
+<?php if($watch_status) : ?>
+<?php foreach($watches as $watch) : ?>
+<section id="rt_watch"
+    style="background: url(<?php echo $watch['image']; ?>); background-size: cover; background-attachment: fixed; background-repeat: no-repeat;">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="watch_content">
+                <a class="various fancybox" data-fancybox-type="iframe" href="<?php echo $watch['link']; ?>"><img
+                        src="image/template/videobutton.png" alt="Play Button"></a>
+                <h1><?php echo $watch_title; ?></h1>
+                <p class="text-center"><?php echo $watch_meta_description; ?></p>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endforeach; ?>
+<?php endif; ?>
+<!--=========================*
+        End Watch
+*===========================-->
+
+<!--=========================*
+          Testimonial
+*===========================-->
+<?php if($testimonial_status) : ?>
+<section id="rt_testimonial">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mt_heading">
+                    <h2 class="section_heading text-center"><span><?php echo $testimonial_title; ?></span></h2>
+                    <p class="heading_txt text-center"><?php echo $testimonial_meta_description; ?></p>
+                </div>
+                <div class="owl-carousel">
+                    <?php if($testimonials) : ?>
+                    <?php $testimonial_count = 1; ?>
+                    <?php foreach($testimonials as $testimonial) : ?>
+                    <!-- Slide <?php echo $testimonial_count; ?> -->
+                    <div class="item">
+                        <div class="testimonial_main">
+                            <div class="col-xs-12">
+                                <p><?php echo $testimonial['description']; ?></p>
+                                <div class="mt_testimonial_img">
+                                    <img src="<?php echo $testimonial['thumb']; ?>" alt="">
+                                </div>
+                                <div class="client_name">
+                                    <em><?php echo $testimonial['name']; ?></em>
+                                    <span><?php echo $testimonial['designation']; ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php $testimonial_count = $testimonial_count + 1; ?>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<!--=========================*
+        End	Testimonial
+*===========================-->
+
+<!--=========================*
+          Fun And Facts
+*===========================-->
+<?php if($fact_status) : ?>
+<section id="mt_fun">
+    <div class="container">
+        <div class="row facts_row">
+            <div class="mt_heading_white">
+                <h2 class="section_heading text-center"><span><?php echo $fact_title; ?></span></h2>
+                <p class="heading_txt text-center"><?php echo $fact_meta_description; ?></p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 facts_col">
+                <div class="fun-facts_wrapper">
+                    <div class="fun-facts_contain">
+                        <p>
+                            <i class="<?php echo $website_icon; ?>"></i>
+                        </p>
+                        <div class="fun-facts_item">
+                        </div>
+                    </div>
+                    <p class="fun-facts_figure timer" data-to="<?php echo $website; ?>" data-speed="3000"></p>
+                    <p class="fun-facts_title">
+                        <?php echo $text_website; ?>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 facts_col">
+                <div class="fun-facts_wrapper">
+                    <div class="fun-facts_contain">
+                        <p>
+                            <i class="<?php echo $ecommerce_icon; ?>"></i>
+                        </p>
+                        <div class="fun-facts_item">
+                        </div>
+                    </div>
+                    <p class="fun-facts_figure timer" data-to="<?php echo $ecommerce; ?>" data-speed="3000"></p>
+                    <p class="fun-facts_title">
+                        <?php echo $text_ecommerce; ?>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 facts_col">
+                <div class="fun-facts_wrapper">
+                    <div class="fun-facts_contain">
+                        <p>
+                            <i class="<?php echo $software_icon; ?>"></i>
+                        </p>
+                        <div class="fun-facts_item">
+                        </div>
+                    </div>
+                    <p class="fun-facts_figure timer" data-to="<?php echo $software; ?>" data-speed="3000"></p>
+                    <p class="fun-facts_title">
+                        <?php echo $text_software; ?>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 facts_col">
+                <div class="fun-facts_wrapper">
+                    <div class="fun-facts_contain">
+                        <p>
+                            <i class="<?php echo $client_icon; ?>"></i>
+                        </p>
+                        <div class="fun-facts_item">
+                        </div>
+                    </div>
+                    <p class="fun-facts_figure timer" data-to="<?php echo $client; ?>" data-speed="3000"></p>
+                    <p class="fun-facts_title">
+                        <?php echo $text_customer; ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<!--=========================*
+        End Fun And Facts
+*===========================-->
+
+<!--=========================*
+            Blog
+*===========================-->
+<?php if($blog_status) : ?>
+<section id="rt_blog">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mt_heading">
+                    <h2 class="section_heading text-center"><span><?php echo $blog_title; ?></span></h2>
+                    <p class="heading_txt text-center"><?php echo $blog_meta_description; ?></p>
+                </div>
+            </div>
+            <!--=== Post Item ===-->
+            <div class="col-md-4 col-sm-12 grid-item">
+                <figure class="blog_post">
+                    <div class="image">
+                        <img src="image/template/blog/post-1.jpg" alt="Post Image" />
+                    </div>
+                    <figcaption>
+                        <div class="date"><span class="day">28</span><span class="month">Oct</span></div>
+                        <h3>There are many variations of passages of Lorem</h3>
+                    </figcaption>
+                    <a href="blog-single.html"></a>
+                </figure>
+            </div>
+            <!--=== End Post Item ===-->
+            <!--=== Post Item ===-->
+            <div class="col-md-4 col-sm-12 grid-item">
+                <figure class="blog_post">
+                    <div class="image">
+                        <img src="image/template/blog/post-2.jpg" alt="Post Image" />
+                    </div>
+                    <figcaption>
+                        <div class="date"><span class="day">15</span><span class="month">Dec</span></div>
+                        <h3>Latin words, combined with a handful of model</h3>
+                    </figcaption>
+                    <a href="blog-single.html"></a>
+                </figure>
+            </div>
+            <!--=== End Post Item ===-->
+            <!--=== Post Item ===-->
+            <div class="col-md-4 col-sm-12 grid-item">
+                <figure class="blog_post">
+                    <div class="image">
+                        <img src="image/template/blog/post-3.jpg" alt="Post Image" />
+                    </div>
+                    <figcaption>
+                        <div class="date"><span class="day">01</span><span class="month">Nov</span></div>
+                        <h3>Sed ut perspiciatis unde omnis iste natus</h3>
+                    </figcaption>
+                    <a href="blog-single.html"></a>
+                </figure>
+            </div>
+            <!--=== End Post Item ===-->
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a href="blog-listing.html" class="rt_btn_color rt_view_btn">View All Posts</a>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<!--=========================*
+            End	Blog
+*===========================-->
+
+<!--=========================*
+            Contact
+*===========================-->
+<?php if($contact_status) : ?>
+<section id="rt_contact">
+    <div class="mt_heading">
+        <h2 class="section_heading text-center"><span><?php echo $contact_title; ?></span></h2>
+        <p class="heading_txt text-center"><?php echo $contact_meta_description; ?></p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="contact_info">
+                    <div class="contact_heading">
+                        <span>Get in Touch</span>
+                        <h3>Contact info</h3>
+                    </div>
+                    <div class="email_sec">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="location">
+                                    <i class="icon-map"></i>
+                                    <h5><?php echo $text_location; ?></h5>
+                                    <p><?php echo $address; ?></p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="time">
+                                    <i class="icon-alarmclock"></i>
+                                    <h5><?php echo $text_open; ?></h5>
+                                    <?php echo $open; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="location">
+                                    <i class="icon-phone"></i>
+                                    <div class="phone">
+                                        <h5><?php echo $text_phone; ?></h5>
+                                        <p><a href="tel:<?php echo $telephone; ?>"><?php echo $telephone; ?></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="email">
+                                    <i class="icon-envelope"></i>
+                                    <h5><?php echo $text_email; ?></h5>
+                                    <p><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="contact_form">
+                    <h3>Stay in Touch</h3>
+                    <form id="contact_form" onload="$(this).reset()">
+                        <input type="text" name="name" id="name" placeholder="Your name" required />
+                        <input type="email" name="email" id="email" placeholder="Your email" required />
+                        <textarea cols="30" rows="5" name="message" id="message" placeholder="Your message"
+                            required></textarea>
+                        <button class="rt_btn_color" id="submit-btn">Send<span
+                                class="mt_load"><span></span></span></button>
+                        <div id="msg"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<!--=========================*
+          End Contact
+*===========================-->
+
+<!--=========================*
+            Get App
+*===========================-->
+<!-- <section id="rt_get_app" style="background: url(image/template/feature/get-bg.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="mt_heading">
+                        <h2 class="section_heading"><span>Download App Now</span></h2>
+                        <p class="heading_txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi </p>
+                    </div>
+                    <a href="#" class="btn btn-app-store">
+                        <i class="fa fa-apple"></i> <span class="small">Download on the</span> <span class="big">App
+                            Store</span>
+                    </a>
+                    <a href="#" class="btn btn-app-store google_play">
+                        <i class="ion-social-android"></i> <span class="small">Download on the</span> <span
+                            class="big">Play Store</span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <img src="image/template/feature/get-mobile.png" alt="Mobile Image">
+                </div>
+            </div>
+        </div>
+    </section> -->
+<!--=========================*
+          End Get App
+*===========================-->
+
+<!--=========================*
+          Subscribe
+*===========================-->
+<!-- <section id="newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="newsletter_wrapper">
+                        <div class="newsletter-inner_wrapper">
+                            <h4>
+                                <span class="stay-touch">Stay in touch to</span>
+                                <span class="offers">Get Exlusive Offers</span>
+                            </h4>
+                            <form id="mc-newsletter" action="#" class="newsletterForm">
+                                <div class="input-group">
+                                    <input type="email" id="mc-newsletter-input" autocomplete="off"
+                                        placeholder="Enter your email" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button id="btn-newsletter" class="btn btn-default submit-button" type="submit">
+                                            <img id="newsletter-btn-image" alt="image" src="image/template/icon-send.png" />
+                                        </button>
+                                    </span>
+                                </div>
+                                <p class="newsletter-message"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </section> -->
+<!--=========================*
+          End Subscribe
+*===========================-->
+<?php echo $footer; ?>

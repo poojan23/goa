@@ -1,0 +1,261 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<!--=========================*
+     Banner
+*===========================-->
+<section id="general_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-left">
+                <div class="bread_crumbs">
+                    <h1><?php echo $heading_title; ?></h1>
+                    <!-- <ul class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">Blog Post</li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="white-svg">
+        <svg viewBox="0 0 1440.002 238.478" xml:space="preserve">
+            <path clip-rule="evenodd"
+                d="M1440.002,189.252C591.624,304.273,597.079,58.018,0,0
+                c0,91.006,0,216.847,0,238.478c148.21-0.137,1440.002,0,1440.002,0S1440.002,208.484,1440.002,189.252L1440.002,189.252z"></path>
+        </svg>
+    </div>
+    <!--white-svg-->
+</section>
+<!--=========================*
+          End Banner
+*===========================-->
+
+<!--=========================*
+         Blog Main Sec
+*===========================-->
+<section id="blog_main_sec">
+    <div class="container">
+        <div class="row">
+            <!--=========================*
+                    Blog Content Sec
+            *===========================-->
+            <div class="col-md-8 col-xs-offset-2">
+                <div class="author_box">
+                    <div class="author_img">
+                        <img src="image/default-image.png" alt="Author">
+                        <!-- <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul> -->
+                    </div>
+                    <div class="author_bio">
+                        <h5>Success</h5>
+                        <p>Duis a enim vel mauris ultrices. Nullam aliquet velit ac velit tempus in semper an neque
+                            auctor. Aenean ligula mi, auctor sed tempus.Duis a enim vel mauris ultrices. Nullam
+                            aliquet
+                            velit ac velit tempus in semper an neque auctor. Aenean ligula mi, auctor sed
+                            tempus.</p>
+                    </div>
+                </div>
+            </div>
+            <!--=========================*
+                  End Blog Content Sec
+            *===========================-->
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-image" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Upload Image</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <input type="text" value="" class="form-control" id="input-filename" readonly="readonly" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" id="button-browse">Browse</button>
+                    </span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button-upload">Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--===========================*
+        End Blog Main Sec
+*=============================-->
+<?php echo $footer; ?>
+<script type="text/javascript">
+    $('#counter').text($('textarea[name=\'description\']').attr('maxlength'));
+
+    $('textarea[name=\'description\']').on('keyup keydown', function () {
+        var $this = $(this);
+        var $counter = $('#counter');
+        var $limit = $this.attr('maxlength');
+
+        if ($this.val().length > $limit) {
+            $this.val() = $this.val().substring(0, $limit);
+        } else {
+            $counter.text($limit - $this.val().length);
+        }
+    });
+
+    function charLimit(textarea, counter, limit) {
+        if (textarea.value.length > limit) {
+            textarea.value = textarea.value.substring(0, limit);
+        } else {
+            counter.value = limit - textarea.value.length;
+        }
+    }
+</script>
+<script type="text/javascript">
+    $(document).tooltip({
+        selector: '[data-toggle=\'tooltip\']',
+        container: 'body',
+        html: true
+    });
+
+    // Tooltip remove
+    $('[data-toggle=\'tooltip\']').on('remove', function () {
+        $(this).tooltip('destroy');
+    });
+
+    // Tooltip remove fixed
+    $(document).on('click', '[data-toggle=\'tooltip\']', function (e) {
+        $('body > .tooltip').remove();
+    });
+
+    $('#form-upload').remove();
+
+    $(document).on('click', 'a[data-toggle=\'image\']', function (e) {
+        var $element = $(this);
+        var $popover = $element.data('bs.popover');
+
+        e.preventDefault();
+
+        // Destroy all image popovers
+        $('a[data-toggle="image"]').popover('destroy');
+
+        // Remove flickering (do not re-add the popover when clicking for removal)
+        if ($popover) {
+            return;
+        }
+
+        $element.popover({
+            html: true,
+            placement: 'right',
+            trigger: 'manual',
+            content: function () {
+                return '<button type="button" id="button-image" class="btn btn-primary" data-toggle="tooltip" title="Upload"><i class="fa fa-pencil"></i></button> <button type="button" id="button-clear" class="btn btn-danger" data-toggle="tooltip" title="Clear"><i class="fa fa-trash-o"></i></button>';
+            }
+        });
+
+        $element.popover('show');
+
+        $('#button-image').on('click', function () {
+            var $button = $(this);
+            var $icon = $button.find('> i');
+
+            $('#modal-image').on('hidden.bs.modal', function () {
+                $button.prop('disabled', false);
+                if ($icon.length) {
+                    $icon.attr('class', 'fa fa-pencil');
+                }
+
+                $('#form-upload').remove();
+
+                $('#input-filename').val('');
+            });
+
+            $('#modal-image').modal('show');
+
+            if (($('#modal-image').data('bs.modal') || {}).isShown) {
+                $button.prop('disabled', true);
+                if ($icon.length) {
+                    $icon.attr('class', 'fa fa-circle-o-notch fa-spin');
+                }
+
+                $('#button-browse').unbind().on('click', function () {
+                    $('#form-upload').remove();
+
+                    $('body').prepend(
+                        '<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>'
+                    );
+
+                    $('#form-upload input[name=\'file\']').trigger('click');
+
+                    $('#form-upload input[name=\'file\']').on('change', function (e) {
+                        var filename = e.target.files[0].name;
+                        var filepath = $(this).val();
+                        $('#input-filename').val(filename);
+                    });
+                });
+
+                $(document).on('click', '#button-upload', function () {
+                    if (typeof timer != 'undefined') {
+                        clearInterval(timer);
+                    }
+
+                    timer = setInterval(function () {
+                        if ($('#form-upload input[name=\'file\']').val() != '') {
+                            clearInterval(timer);
+
+                            $.ajax({
+                                url: 'index.php?url=common/testimonial/upload',
+                                type: 'POST',
+                                dataType: 'json',
+                                data: new FormData($('#form-upload')[0]),
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                beforeSend: function () {
+                                    $('#button-upload').button('Uploading');
+                                },
+                                complete: function () {
+                                    $('#button-upload').button('reset');
+                                },
+                                success: function (json) {
+                                    if (json['error']) {
+                                        alert(json['error']);
+                                    }
+
+                                    if (json['success']) {
+                                        alert(json['success']);
+
+                                        $element.find('img').attr('src',
+                                            json['thumb']);
+
+                                        $element.next('input').val(json[
+                                            'target']);
+                                    }
+                                },
+                                error: function (xhr, ajaxOptions,
+                                    thrownError) {
+                                    alert(thrownError + "\r\n" + xhr
+                                        .statusText + "\r\n" + xhr
+                                        .responseText);
+                                }
+                            });
+
+                            $('#modal-image').modal('hide');
+                        }
+                    }, 500);
+                });
+            }
+
+            $element.popover('destroy');
+
+            $('[data-toggle=\'tooltip\']').tooltip('destroy');
+        })
+    });
+</script>

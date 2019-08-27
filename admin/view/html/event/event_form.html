@@ -1,0 +1,300 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state breadcrumbs-fixed" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                    <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                        <?php if($i == 0) : ?>
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                        </li>
+                        <?php else : ?>
+                        <li>
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                        </li>
+                        <?php endif; ?>
+                    <?php else : ?>
+                    <li class="active"><?php echo $breadcrumbs[$i]['text']; ?></li>
+                    <?php endif; ?>
+                <?php endfor; ?>               
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1 class="pull-left">
+                    <?php echo $heading_title; ?>
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        <?php echo $text_form; ?>
+                    </small>
+                </h1>
+                <div class="text-right">
+                    <button type="submit" form="form-user-group" class="btn btn-white btn-info btn-bold" data-toggle="tooltip" title="<?php echo $button_save; ?>"><i class="ace-icon fa fa-floppy-o"></i></button>
+                    <a href="<?php echo $cancel; ?>" class="btn btn-white btn-light btn-bold" data-toggle="tooltip" title="<?php echo $button_cancel; ?>"><i class="ace-icon fa fa-reply"></i></a>
+                </div>
+            </div><!-- /.page-header -->
+            <?php if($warning_err) : ?>
+            <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> <?php echo $warning_err; ?>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+            <?php endif; ?>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <form id="form-user-group" class="form-horizontal" action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data">
+                        <div class="box-body">
+                            <div class="widget-box">
+                                <div class="widget-header">
+                                    <h4 class="widget-title"><?php echo $text_form; ?></h4>
+                                </div>
+
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
+                                            <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_image; ?></a></li>
+                                            <li><a href="#tab-seo" data-toggle="tab"><?php echo $tab_seo; ?></a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="tab-general">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="language<?php echo $language['language_id']; ?>">
+                                            <div class="form-group row required">
+                                                    <label for="input-date" class="col-sm-2 col-form-label">
+                                                        <?php echo $entry_date; ?></label>
+
+                                                    <div class="col-sm-10">
+                                                        <?php $curr_date = date("Y-m-d");?>
+                                                        <?php if ($date): ?>
+                                                        <input type="date" name="date" value="<?php echo $date; ?>" class="form-control" id="input-date" />
+                                                        <?php else : ?>
+                                                        <input type="date" name="date" value="<?php echo $curr_date; ?>" class="form-control" id="input-date" />
+                                                        <?php endif; ?>
+                                                        
+                                                    </div>
+                                                </div>
+                                            <div class="form-group row required">
+                                                <label for="input-name"
+                                                       class="col-sm-2 col-form-label"><?php echo $entry_name; ?></label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text"
+                                                           name="event_name"
+                                                           value="<?php echo $event_name;?>"
+                                                           placeholder="<?php echo $entry_name; ?>" class="form-control"
+                                                           id="input-name" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="input-description"
+                                                       class="col-sm-2 col-form-label"><?php echo $entry_description; ?></label>
+
+                                                <div class="col-sm-10">
+                                                    <textarea
+                                                        name="description"
+                                                        placeholder="<?php echo $entry_description; ?>"
+                                                        class="form-control"
+                                                        id="input-description"
+                                                        data-toggle="ckeditor" data-lang="<?php echo $ckeditor; ?>"><?php echo $description; ?></textarea>
+                                                    <?php if(isset($title_footer_err)) : ?>
+                                                    <div class="invalid-tooltip">
+                                                        <?php echo $title_footer_err; ?></div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <label for="input-name"
+                                                       class="col-sm-2 col-form-label"><?php echo $entry_url; ?></label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text"
+                                                           name="event_url"
+                                                           value="<?php echo $event_url;?>"
+                                                           placeholder="<?php echo $entry_url; ?>" class="form-control"
+                                                           id="input-name" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="input-sort-order"
+                                                       class="col-sm-2 col-form-label"><?php echo $entry_sort_order; ?></label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="sort_order" value="<?php echo $sort_order; ?>"
+                                                           placeholder="<?php echo $entry_sort_order; ?>" class="form-control"
+                                                           id="input-sort-order" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label"><?php echo $entry_status; ?></label>
+
+                                                <div class="col-sm-10">
+                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                        <?php if($status) : ?>
+                                                        <label class="btn btn-outline-secondary active"><input type="radio"
+                                                                                                               name="status" value="1"
+                                                                                                               checked="ckecked" /><?php echo $text_enabled; ?></label>
+                                                        <label class="btn btn-outline-secondary"><input type="radio"
+                                                                                                        name="status" value="0" /><?php echo $text_disabled; ?></label>
+                                                        <?php else : ?>
+                                                        <label class="btn btn-outline-secondary"><input type="radio"
+                                                                                                        name="status" value="1" /><?php echo $text_enabled; ?></label>
+                                                        <label class="btn btn-outline-secondary active"><input type="radio"
+                                                                                                               name="status" value="0"
+                                                                                                               checked="ckecked" /><?php echo $text_disabled; ?></label>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-data">
+                                    <fieldset>
+                                        <legend><?php echo $entry_image; ?></legend>
+                                        <div class="row">
+                                            <div class="col-sm-4 col-md-3 mb-3">
+                                                <div class="card image">
+                                                    <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" width="100" height="100"></a>
+                                                    <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                    <div class="table-responsive">
+                                        <table id="images" class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <td class="text-left"><?php echo $entry_additional_image; ?></td>
+                                                    <td class="text-left"><?php echo $entry_sort_order; ?></td>
+                                                    <td></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $image_row = 0; ?>
+                                                <?php foreach($event_images as $event_image) : ?>
+                                                <tr id="image-row<?php echo $image_row; ?>">
+                                                    <td>
+                                                        <div class="card image">
+                                                          <img src="<?php echo $event_image['thumb']; ?>" alt="" title="" id="thumb-image<?php echo $image_row; ?>" data-placeholder="<?php echo $placeholder; ?>" class="card-img-top"/> <input type="hidden" name="event_image[<?php echo $image_row; ?>][image]" value="<?php echo $event_image['image']; ?>" id="input-image<?php echo $image_row; ?>"/>
+                                                        </div>
+                                                      </td>
+                                                    <td class="text-left">
+                                                        <input type="text" name="event_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $event_image['sort_order']; ?>" placeholder="<?php echo entry_sort_order; ?>" class="form-control">
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <button type="button" onclick="$('#image-row<?php echo $image_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <?php $image_row = $image_row + 1; ?>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="2"></td>
+                                                    <td class="text-right">
+                                                        <button type="button" onclick="addImage();" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                     </fieldset>
+                                </div>
+                                <div class="tab-pane" id="tab-seo">
+                                    <div class="alert alert-info"><i class="fa fa-info-circle"></i>
+                                        <?php echo $text_keyword; ?></div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <td class="text-left"><?php echo $entry_language; ?></td>
+                                                    <td class="text-left"><?php echo $entry_keyword; ?></td>
+                                                    <td class="text-left"><?php echo $entry_keyword; ?></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach($languages as $language) : ?>
+                                                <tr>
+                                                    <td class="text-left"><?php echo $language['name']; ?></td>
+                                                    <td class="text-left">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png"
+                                                                         alt="<?php echo $language['code']; ?>"
+                                                                         title="<?php echo $language['name']; ?>" />
+                                                                </span>
+                                                            </div>
+                                                            <input type="text"
+                                                                   name="event_seo_url[<?php echo $language['language_id']; ?>]"
+                                                                   value="<?php if(isset($event_seo_url[$language['language_id']])) : ?><?php echo $event_seo_url[$language['language_id']]; ?><?php endif; ?>"
+                                                                   placeholder="<?php echo $entry_keyword; ?>"
+                                                                   class="form-control" />
+                                                        </div>
+                                                        <?php if(isset($keyword_err[$language['language_id']])) : ?>
+                                                        <div class="invalid-tooltip">
+                                                            <?php echo $keyword_err[$language['language_id']]; ?></div>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form><!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+<?php echo $footer; ?>
+
+<link rel="stylesheet" href="template/view/dist/css/bootstrap-datepicker3.min.css" />
+<script src="template/view/dist/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+    var image_row = '<?php echo $image_row; ?>';
+
+    function addImage() {
+        html = '<tr id="image-row' + image_row + '">';
+        html += '<td><div class="card image">';
+        html += '<a href="" id="thumb-image' + image_row + '"data-toggle="image" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>"  class="card-img-top"/></a><input type="hidden" name="event_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
+        html += '<td class="text-left"><input type="text" name="event_image[' + image_row + '][sort_order]" value="0" placeholder="<?php echo $sort_order; ?>" class="form-control" /></td>';
+        html += '<td class="text-right"><button type="button" onclick="$(\'#image-row' + image_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+        html += '</tr>';
+
+        $('#images tbody').append(html);
+
+        image_row++;
+    }
+</script>
+<script type="text/javascript">
+    $('#language a:first').tab('show');
+</script>
+<script type="text/javascript">
+    $('textarea[data-toggle=\'ckeditor\']').ckeditor();
+</script>

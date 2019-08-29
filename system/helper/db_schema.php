@@ -128,7 +128,230 @@ function db_schema()
 		'charset' => 'utf8',
 		'collate' => 'utf8_general_ci'
 	);
+        
+	$tables[] = array(
+		'name' => 'customer',
+		'field' => array(
+			array(
+				'name' => 'customer_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			),
+			array(
+				'name' => 'customer_group_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'name',
+				'type' => 'varchar(128)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'relation',
+				'type' => 'varchar(45)'
+			),
+			array(
+				'name' => 'dob',
+				'type' => 'varchar(45)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'profession',
+				'type' => 'varchar(45)'
+			),
+			array(
+				'name' => 'fee',
+				'type' => 'varchar(45)'
+			),
+			array(
+				'name' => 'phone',
+				'type' => 'varchar(45)'
+			),
+                        array(
+				'name' => 'mobile',
+				'type' => 'varchar(45)',
+				'not_null' => true
+			),
+                        array(
+				'name' => 'email',
+				'type' => 'varchar(96)'
+			),
+			array(
+				'name' => 'address',
+				'type' => 'text',
+				'not_null' => true
+			),
+			array(
+				'name' => 'pincode',
+				'type' => 'int(11)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'place',
+				'type' => 'varchar(45)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'image',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'status',
+				'type' => 'tinyint(1)',
+				'not_null' => true,
+				'default' => '1'
+			),
+                        array(
+				'name' => 'sort_order',
+				'type' => 'int(3)',
+				'not_null' => true,
+				'default' => '0'
+			),
+                        array(
+				'name' => 'date_added',
+				'type' => 'datetime',
+				'not_null' => true
+			),
+			array(
+				'name' => 'date_modified',
+				'type' => 'datetime',
+				'not_null' => true
+			)
+		),
+		'primary' => array(
+			'customer_id'
+		),
+		'engine' => 'InnoDB',
+		'charset' => 'utf8',
+		'collate' => 'utf8_general_ci'
+	);
 
+	$tables[] = array(
+		'name' => 'customer_group',
+		'field' => array(
+			array(
+				'name' => 'customer_group_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			),
+			array(
+				'name' => 'name',
+				'type' => 'varchar(96)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'description',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'approval',
+				'type' => 'int(11)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'sort_order',
+				'type' => 'int(3)',
+				'not_null' => true,
+				'default' => '0'
+			),
+                        array(
+				'name' => 'date_added',
+				'type' => 'datetime',
+				'not_null' => true
+			),
+			array(
+				'name' => 'date_modified',
+				'type' => 'datetime',
+				'not_null' => true
+			)
+		),
+		'primary' => array(
+			'customer_group_id'
+		),
+		'engine' => 'InnoDB',
+		'charset' => 'utf8',
+		'collate' => 'utf8_general_ci'
+	);
+        
+                
+	$tables[] = array(
+		'name' => 'customer_family',
+		'field' => array(
+			array(
+				'name' => 'customer_member_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			),
+			array(
+				'name' => 'customer_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'customer_group_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'customer_name',
+				'type' => 'varchar(128)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'customer_relation',
+				'type' => 'varchar(45)'
+			),
+			array(
+				'name' => 'customer_dob',
+				'type' => 'varchar(45)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'customer_profession',
+				'type' => 'varchar(45)'
+			),
+			array(
+				'name' => 'customer_fee',
+				'type' => 'varchar(45)'
+			),
+			array(
+				'name' => 'customer_phone',
+				'type' => 'varchar(45)'
+			),
+                        array(
+				'name' => 'customer_mobile',
+				'type' => 'varchar(45)',
+				'not_null' => true
+			),
+                        array(
+				'name' => 'customer_email',
+				'type' => 'varchar(96)'
+			),
+			array(
+				'name' => 'image',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			),
+                        array(
+				'name' => 'sort_order',
+				'type' => 'int(3)',
+				'not_null' => true,
+				'default' => '0'
+			)
+		),
+		'primary' => array(
+			'customer_member_id'
+		),
+		'engine' => 'InnoDB',
+		'charset' => 'utf8',
+		'collate' => 'utf8_general_ci'
+	);
+        
 	$tables[] = array(
 		'name' => 'crawler',
 		'field' => array(
@@ -260,6 +483,103 @@ function db_schema()
 		'collate' => 'utf8_general_ci'
 	);
 
+	$tables[] = array(
+		'name' => 'events',
+		'field' => array(
+			array(
+				'name' => 'event_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			),
+			array(
+				'name' => 'date',
+				'type' => 'varchar(64)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'name',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'description',
+				'type' => 'mediumtext',
+				'not_null' => true
+			),
+			array(
+				'name' => 'event_url',
+				'type' => 'varchar(255)'
+			),
+			array(
+				'name' => 'image',
+				'type' => 'varchar(255)'
+			),
+			array(
+				'name' => 'status',
+				'type' => 'tinyint(1)',
+				'not_null' => true,
+				'default' => '1'
+			),
+                        array(
+				'name' => 'sort_order',
+				'type' => 'int(3)',
+				'not_null' => true,
+				'default' => '0'
+			),
+                        array(
+				'name' => 'date_added',
+				'type' => 'datetime',
+				'not_null' => true
+			),
+			array(
+				'name' => 'date_modified',
+				'type' => 'datetime',
+				'not_null' => true
+			)
+		),
+		'primary' => array(
+			'event_id'
+		),
+		'engine' => 'InnoDB',
+		'charset' => 'utf8',
+		'collate' => 'utf8_general_ci'
+	);
+        
+        $tables[] = array(
+		'name' => 'event_image',
+		'field' => array(
+			array(
+				'name' => 'event_image_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			),
+			array(
+				'name' => 'event_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'image',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'sort_order',
+				'type' => 'int(3)',
+				'not_null' => true,
+				'default' => '0'
+			)
+		),
+		'primary' => array(
+			'event_image_id'
+		),
+		'engine' => 'InnoDB',
+		'charset' => 'utf8',
+		'collate' => 'utf8_general_ci'
+	);
+        
 	$tables[] = array(
 		'name' => 'information',
 		'field' => array(
@@ -871,7 +1191,105 @@ function db_schema()
 		'charset' => 'utf8',
 		'collate' => 'utf8_general_ci'
 	);
-
+        
+        
+	$tables[] = array(
+		'name' => 'projects',
+		'field' => array(
+			array(
+				'name' => 'project_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			),
+			array(
+				'name' => 'date',
+				'type' => 'varchar(64)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'name',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'description',
+				'type' => 'mediumtext',
+				'not_null' => true
+			),
+			array(
+				'name' => 'project_url',
+				'type' => 'varchar(255)'
+			),
+			array(
+				'name' => 'image',
+				'type' => 'varchar(255)'
+			),
+			array(
+				'name' => 'status',
+				'type' => 'tinyint(1)',
+				'not_null' => true,
+				'default' => '1'
+			),
+                        array(
+				'name' => 'sort_order',
+				'type' => 'int(3)',
+				'not_null' => true,
+				'default' => '0'
+			),
+                        array(
+				'name' => 'date_added',
+				'type' => 'datetime',
+				'not_null' => true
+			),
+			array(
+				'name' => 'date_modified',
+				'type' => 'datetime',
+				'not_null' => true
+			)
+		),
+		'primary' => array(
+			'project_id'
+		),
+		'engine' => 'InnoDB',
+		'charset' => 'utf8',
+		'collate' => 'utf8_general_ci'
+	);
+        
+        $tables[] = array(
+		'name' => 'project_image',
+		'field' => array(
+			array(
+				'name' => 'project_image_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			),
+			array(
+				'name' => 'project_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'image',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			),
+			array(
+				'name' => 'sort_order',
+				'type' => 'int(3)',
+				'not_null' => true,
+				'default' => '0'
+			)
+		),
+		'primary' => array(
+			'project_image_id'
+		),
+		'engine' => 'InnoDB',
+		'charset' => 'utf8',
+		'collate' => 'utf8_general_ci'
+	);
+        
 	$tables[] = array(
 		'name' => 'seo_regex',
 		'field' => array(

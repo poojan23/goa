@@ -80,8 +80,8 @@
 
                                                             <div class="col-sm-10">
                                                                 <input type="text"
-                                                                       name="name"
-                                                                       value="<?php echo $name;?>"
+                                                                       name="member_name"
+                                                                       value="<?php echo $member_name;?>"
                                                                        placeholder="<?php echo $entry_name; ?>" class="form-control"
                                                                        id="input-name" />
                                                             </div>
@@ -156,7 +156,7 @@
                                                             <div class="col-sm-10">
                                                                 <input type="text"
                                                                        name="mobile"
-                                                                       value="<?php echo $mobile;?>"
+                                                                       value="<?php echo $entry_mobile;?>"
                                                                        placeholder="<?php echo $entry_mobile; ?>" class="form-control"
                                                                        id="input-mobile" />
                                                             </div>
@@ -183,63 +183,6 @@
                                                                     <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" width="100" height="100"></a>
                                                                     <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image">
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="form-group row required">
-                                                            <label for="input-address"
-                                                                   class="col-sm-2 col-form-label"><?php echo $entry_address; ?></label>
-
-                                                            <div class="col-sm-10">
-                                                                <input type="text"
-                                                                       name="address"
-                                                                       value="<?php echo $place;?>"
-                                                                       placeholder="<?php echo $entry_address; ?>" class="form-control"
-                                                                       id="input-address" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row required">
-                                                            <label for="input-pin"
-                                                                   class="col-sm-2 col-form-label"><?php echo $entry_pin; ?></label>
-
-                                                            <div class="col-sm-10">
-                                                                <input type="text"
-                                                                       name="pin"
-                                                                       value="<?php echo $pin;?>"
-                                                                       placeholder="<?php echo $entry_pin; ?>" class="form-control"
-                                                                       id="input-pin" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="input-customer-group" class="col-sm-2 col-form-label">
-                                                                <?php echo $entry_customer_group; ?></label>
-
-                                                            <div class="col-sm-10">
-                                                                <select name="customer_group_id" class="form-control" id="input-customer-group">
-                                                                    <?php foreach($customer_groups as $customer_group) : ?>
-                                                                    <?php if($customer_group['customer_group_id'] == $customer_group_id) : ?>
-                                                                    <option value="<?php echo $customer_group['customer_group_id']; ?>" selected="selected">
-                                                                        <?php echo $customer_group['name']; ?>
-                                                                    </option>
-                                                                    <?php else : ?>
-                                                                    <option value="<?php echo $customer_group['customer_group_id']; ?>">
-                                                                        <?php echo $customer_group['name']; ?>
-                                                                    </option>
-                                                                    <?php endif; ?>
-                                                                    <?php endforeach; ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row required">
-                                                            <label for="input-place"
-                                                                   class="col-sm-2 col-form-label"><?php echo $entry_place; ?></label>
-
-                                                            <div class="col-sm-10">
-                                                                <input type="text"
-                                                                       name="place"
-                                                                       value="<?php echo $place;?>"
-                                                                       placeholder="<?php echo $entry_place; ?>" class="form-control"
-                                                                       id="input-place" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -298,39 +241,39 @@
                                                             </thead>
                                                             <tbody>
                                                                 <?php $image_row = 0; ?>
-                                                                <?php foreach($customer_images as $customer_image) : ?>
+                                                                <?php foreach($member_images as $member_image) : ?>
                                                                 <tr id="image-row<?php echo $image_row; ?>">
                                                                     <td class="text-left">
-                                                                        <input type="text" name="customer_image[<?php echo $image_row; ?>][customer_name]" value="<?php echo $customer_image['customer_name']; ?>" placeholder="<?php echo $entry_name; ?>" class="form-control">
+                                                                        <input type="text" name="member_image[<?php echo $image_row; ?>][member_name]" value="<?php echo $member_image['member_name']; ?>" placeholder="<?php echo $entry_name; ?>" class="form-control">
                                                                     </td>
                                                                     <td class="text-left">
-                                                                        <input type="text" name="customer_image[<?php echo $image_row; ?>][customer_relation]" value="<?php echo $customer_image['customer_relation']; ?>" placeholder="<?php echo $entry_relation; ?>" class="form-control">
+                                                                        <input type="text" name="member_image[<?php echo $image_row; ?>][member_relation]" value="<?php echo $member_image['member_relation']; ?>" placeholder="<?php echo $entry_relation; ?>" class="form-control">
                                                                     </td>
                                                                     <td class="text-left">
-                                                                        <input type="date" name="customer_image[<?php echo $image_row; ?>][customer_dob]" value="<?php echo $customer_image['customer_dob']; ?>" placeholder="<?php echo $entry_date; ?>" class="form-control">
+                                                                        <input type="date" name="member_image[<?php echo $image_row; ?>][member_dob]" value="<?php echo $member_image['member_dob']; ?>" placeholder="<?php echo $entry_date; ?>" class="form-control">
                                                                     </td>
                                                                     <td class="text-left">
-                                                                        <input type="text" name="customer_image[<?php echo $image_row; ?>][customer_profession]" value="<?php echo $customer_image['customer_profession']; ?>" placeholder="<?php echo $entry_profession; ?>" class="form-control">
+                                                                        <input type="text" name="member_image[<?php echo $image_row; ?>][member_profession]" value="<?php echo $member_image['member_profession']; ?>" placeholder="<?php echo $entry_profession; ?>" class="form-control">
                                                                     </td>
                                                                     <td class="text-left">
-                                                                        <input type="text" name="customer_image[<?php echo $image_row; ?>][customer_fee]" value="<?php echo $customer_image['customer_fee']; ?>" placeholder="<?php echo $entry_fee; ?>" class="form-control">
+                                                                        <input type="text" name="member_image[<?php echo $image_row; ?>][member_fee]" value="<?php echo $member_image['member_fee']; ?>" placeholder="<?php echo $entry_fee; ?>" class="form-control">
                                                                     </td>
                                                                     <td class="text-left">
-                                                                        <input type="text" name="customer_image[<?php echo $image_row; ?>][customer_phone]" value="<?php echo $customer_image['customer_phone']; ?>" placeholder="<?php echo $entry_phone; ?>" class="form-control">
+                                                                        <input type="text" name="member_image[<?php echo $image_row; ?>][member_phone]" value="<?php echo $member_image['member_phone']; ?>" placeholder="<?php echo $entry_phone; ?>" class="form-control">
                                                                     </td>
                                                                     <td class="text-left">
-                                                                        <input type="text" name="customer_image[<?php echo $image_row; ?>][customer_mobile]" value="<?php echo $customer_image['customer_mobile']; ?>" placeholder="<?php echo $entry_mobile; ?>" class="form-control">
+                                                                        <input type="text" name="member_image[<?php echo $image_row; ?>][member_mobile]" value="<?php echo $member_image['member_mobile']; ?>" placeholder="<?php echo $entry_mobile; ?>" class="form-control">
                                                                     </td>
                                                                     <td class="text-left">
-                                                                        <input type="text" name="customer_image[<?php echo $image_row; ?>][customer_email]" value="<?php echo $customer_image['customer_email']; ?>" placeholder="<?php echo $entry_email; ?>" class="form-control">
+                                                                        <input type="text" name="member_image[<?php echo $image_row; ?>][member_email]" value="<?php echo $member_image['member_email']; ?>" placeholder="<?php echo $entry_email; ?>" class="form-control">
                                                                     </td>
                                                                     <td>
                                                                         <div class="card image">
-                                                                            <img src="<?php echo $customer_image['thumb']; ?>" alt="" title="" id="thumb-image<?php echo $image_row; ?>" data-placeholder="<?php echo $placeholder; ?>" class="card-img-top"/> <input type="hidden" name="customer_image[<?php echo $image_row; ?>][image]" value="<?php echo $customer_image['image']; ?>" id="input-image<?php echo $image_row; ?>"/>
+                                                                            <img src="<?php echo $member_image['thumb']; ?>" alt="" title="" id="thumb-image<?php echo $image_row; ?>" data-placeholder="<?php echo $placeholder; ?>" class="card-img-top"/> <input type="hidden" name="member_image[<?php echo $image_row; ?>][image]" value="<?php echo $member_image['image']; ?>" id="input-image<?php echo $image_row; ?>"/>
                                                                         </div>
                                                                     </td>
                                                                     <td class="text-left">
-                                                                        <input type="text" name="customer_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $customer_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control">
+                                                                        <input type="text" name="member_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $member_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control">
                                                                     </td>
                                                                     <td class="text-left">
                                                                         <button type="button" onclick="$('#image-row<?php echo $image_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
@@ -360,6 +303,7 @@
                                                             <tr>
                                                                 <td class="text-left"><?php echo $entry_language; ?></td>
                                                                 <td class="text-left"><?php echo $entry_keyword; ?></td>
+                                                                <td class="text-left"><?php echo $entry_keyword; ?></td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -368,9 +312,16 @@
                                                                 <td class="text-left"><?php echo $language['name']; ?></td>
                                                                 <td class="text-left">
                                                                     <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">
+                                                                                <img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png"
+                                                                                     alt="<?php echo $language['code']; ?>"
+                                                                                     title="<?php echo $language['name']; ?>" />
+                                                                            </span>
+                                                                        </div>
                                                                         <input type="text"
-                                                                               name="customer_seo_url[<?php echo $language['language_id']; ?>]"
-                                                                               value="<?php if(isset($customer_seo_url[$language['language_id']])) : ?><?php echo $customer_seo_url[$language['language_id']]; ?><?php endif; ?>"
+                                                                               name="member_seo_url[<?php echo $language['language_id']; ?>]"
+                                                                               value="<?php if(isset($member_seo_url[$language['language_id']])) : ?><?php echo $member_seo_url[$language['language_id']]; ?><?php endif; ?>"
                                                                                placeholder="<?php echo $entry_keyword; ?>"
                                                                                class="form-control" />
                                                                     </div>
@@ -401,29 +352,29 @@
 <link rel="stylesheet" href="template/view/dist/css/bootstrap-datepicker3.min.css" />
 <script src="template/view/dist/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript">
-                                                                            var image_row = '<?php echo $image_row; ?>';
+                                                            var image_row = '<?php echo $image_row; ?>';
 
-                                                                            function addImage() {
-                                                                                html = '<tr id="image-row' + image_row + '">';
-                                                                                html += '<td class="text-left"><input type="text" name="customer_image[' + image_row + '][customer_name]" value="" placeholder="<?php echo $entry_name; ?>" class="form-control" /></td>';
-                                                                                html += '<td class="text-left"><input type="text" name="customer_image[' + image_row + '][customer_relation]" value="" placeholder="<?php echo $entry_relation; ?>" class="form-control" /></td>';
-                                                                                html += '<td class="text-left"><input type="date" name="customer_image[' + image_row + '][customer_dob]" value="" placeholder="<?php echo $entry_date; ?>" class="form-control" /></td>';
-                                                                                html += '<td class="text-left"><input type="text" name="customer_image[' + image_row + '][customer_profession]" value="" placeholder="<?php echo $entry_profession; ?>" class="form-control" /></td>';
-                                                                                html += '<td class="text-left"><input type="text" name="customer_image[' + image_row + '][customer_fee]" value="" placeholder="<?php echo $entry_fee; ?>" class="form-control" /></td>';
-                                                                                html += '<td class="text-left"><input type="text" name="customer_image[' + image_row + '][customer_phone]" value="" placeholder="<?php echo $entry_phone; ?>" class="form-control" /></td>';
-                                                                                html += '<td class="text-left"><input type="text" name="customer_image[' + image_row + '][customer_mobile]" value="" placeholder="<?php echo $entry_mobile; ?>" class="form-control" /></td>';
-                                                                                html += '<td class="text-left"><input type="text" name="customer_image[' + image_row + '][customer_email]" value="" placeholder="<?php echo $entry_email; ?>" class="form-control" /></td>';
-                                                                                html += '<td><div class="card image">';
-                                                                                html += '<a href="" id="thumb-image' + image_row + '"data-toggle="image" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>"  class="card-img-top"/></a><input type="hidden" name="customer_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
+                                                            function addImage() {
+                                                                html = '<tr id="image-row' + image_row + '">';
+                                                                html += '<td class="text-left"><input type="text" name="member_image[' + image_row + '][member_name]" value="" placeholder="<?php echo $entry_name; ?>" class="form-control" /></td>';
+                                                                html += '<td class="text-left"><input type="text" name="member_image[' + image_row + '][member_relation]" value="" placeholder="<?php echo $entry_relation; ?>" class="form-control" /></td>';
+                                                                html += '<td class="text-left"><input type="text" name="member_image[' + image_row + '][member_dob]" value="" placeholder="<?php echo $entry_date; ?>" class="form-control" /></td>';
+                                                                html += '<td class="text-left"><input type="date" name="member_image[' + image_row + '][member_profession]" value="" placeholder="<?php echo $entry_profession; ?>" class="form-control" /></td>';
+                                                                html += '<td class="text-left"><input type="text" name="member_image[' + image_row + '][member_fee]" value="" placeholder="<?php echo $entry_fee; ?>" class="form-control" /></td>';
+                                                                html += '<td class="text-left"><input type="text" name="member_image[' + image_row + '][member_phone]" value="" placeholder="<?php echo $entry_phone; ?>" class="form-control" /></td>';
+                                                                html += '<td class="text-left"><input type="text" name="member_image[' + image_row + '][member_mobile]" value="" placeholder="<?php echo $entry_mobile; ?>" class="form-control" /></td>';
+                                                                html += '<td class="text-left"><input type="text" name="member_image[' + image_row + '][member_email]" value="" placeholder="<?php echo $entry_email; ?>" class="form-control" /></td>';
+                                                                html += '<td><div class="card image">';
+                                                                html += '<a href="" id="thumb-image' + image_row + '"data-toggle="image" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>"  class="card-img-top"/></a><input type="hidden" name="member_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
+                                                                
+                                                                html += '<td class="text-left"><input type="text" name="member_image[' + image_row + '][sort_order]" value="0" placeholder="<?php echo $sort_order; ?>" class="form-control" /></td>';
+                                                                html += '<td class="text-right"><button type="button" onclick="$(\'#image-row' + image_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+                                                                html += '</tr>';
 
-                                                                                html += '<td class="text-left"><input type="text" name="customer_image[' + image_row + '][sort_order]" value="0" placeholder="<?php echo $sort_order; ?>" class="form-control" /></td>';
-                                                                                html += '<td class="text-right"><button type="button" onclick="$(\'#image-row' + image_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
-                                                                                html += '</tr>';
+                                                                $('#images tbody').append(html);
 
-                                                                                $('#images tbody').append(html);
-
-                                                                                image_row++;
-                                                                            }
+                                                                image_row++;
+                                                            }
 </script>
 <script type="text/javascript">
     $('#language a:first').tab('show');

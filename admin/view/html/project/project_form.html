@@ -228,7 +228,6 @@
                                                 <tr>
                                                     <td class="text-left"><?php echo $entry_language; ?></td>
                                                     <td class="text-left"><?php echo $entry_keyword; ?></td>
-                                                    <td class="text-left"><?php echo $entry_keyword; ?></td>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -237,13 +236,6 @@
                                                     <td class="text-left"><?php echo $language['name']; ?></td>
                                                     <td class="text-left">
                                                         <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text">
-                                                                    <img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png"
-                                                                         alt="<?php echo $language['code']; ?>"
-                                                                         title="<?php echo $language['name']; ?>" />
-                                                                </span>
-                                                            </div>
                                                             <input type="text"
                                                                    name="project_seo_url[<?php echo $language['language_id']; ?>]"
                                                                    value="<?php if(isset($project_seo_url[$language['language_id']])) : ?><?php echo $project_seo_url[$language['language_id']]; ?><?php endif; ?>"

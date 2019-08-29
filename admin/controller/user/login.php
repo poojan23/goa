@@ -10,9 +10,13 @@ class ControllerUserLogin extends PT_Controller
 
         $this->document->setTitle($this->language->get('heading_title'));
 
-        if ($this->user->isLogged() && isset($this->request->get['member_token']) && ($this->request->get['member_token'] == $this->session->data['member_token'])) {
+        if ($this->user->isLogged()) {
             $this->response->redirect($this->url->link('common/dashboard', 'member_token=' . $this->session->data['member_token']));
         }
+//
+//        if ($this->user->isLogged() && isset($this->request->get['member_token']) && ($this->request->get['member_token'] == $this->session->data['member_token'])) {
+//            $this->response->redirect($this->url->link('common/dashboard', 'member_token=' . $this->session->data['member_token']));
+//        }
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
             $this->session->data['member_token'] = token(32);

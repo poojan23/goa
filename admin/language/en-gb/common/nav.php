@@ -72,3 +72,5 @@ $_['text_testimonial']          = 'Testimonial';
 $_['text_store']                = 'Setting';
 $_['text_event']                = 'Event';
 $_['text_project']              = 'Project';
+$_['text_customer']               = 'Member';
+$_['text_customer_group']         = 'Member Group';

@@ -73,10 +73,39 @@ class ControllerCommonNav extends PT_Controller
             if ($event) {
                 $data['menus'][] = array(
                     'id'        => 'menu-design',
-                    'icon'      => 'fa-desktop',
+                    'icon'      => 'fa-calendar',
                     'name'      => $this->language->get('text_event'),
                     'href'      => '',
                     'children'  => $event
+                );
+            }
+            
+             # Member
+            $customer = array();
+            
+            if ($this->user->hasPermission('access', 'customer/customer')) {
+                $customer[] = array(
+                    'name'      => $this->language->get('text_customer'),
+                    'href'      => $this->url->link('customer/customer', 'member_token=' . $this->session->data['member_token']),
+                    'children'  => array()
+                );
+            }
+            
+            if ($this->user->hasPermission('access', 'customer/customer_group')) {
+                $customer[] = array(
+                    'name'      => $this->language->get('text_customer_group'),
+                    'href'      => $this->url->link('customer/customer_group', 'member_token=' . $this->session->data['member_token']),
+                    'children'  => array()
+                );
+            }
+   
+            if ($customer) {
+                $data['menus'][] = array(
+                    'id'        => 'menu-design',
+                    'icon'      => 'fa-user',
+                    'name'      => $this->language->get('text_customer'),
+                    'href'      => '',
+                    'children'  => $customer
                 );
             }
             
@@ -94,7 +123,7 @@ class ControllerCommonNav extends PT_Controller
             if ($project) {
                 $data['menus'][] = array(
                     'id'        => 'menu-design',
-                    'icon'      => 'fa-desktop',
+                    'icon'      => 'fa-tasks',
                     'name'      => $this->language->get('text_project'),
                     'href'      => '',
                     'children'  => $project
@@ -131,7 +160,7 @@ class ControllerCommonNav extends PT_Controller
             if ($design) {
                 $data['menus'][] = array(
                     'id'        => 'menu-design',
-                    'icon'      => 'fa-desktop',
+                    'icon'      => 'fa-flag',
                     'name'      => $this->language->get('text_design'),
                     'href'      => '',
                     'children'  => $design
